@@ -18,8 +18,6 @@ bot.on("message", (msg) => {
   const chatId = msg.chat.id;
   console.log(chatId);
 
-  console.log(chatId);
-
   if (!dataBase.chats.includes(chatId)) {
     dataBase.chats.push(chatId);
     fs.writeFileSync("chats.json", JSON.stringify(dataBase));
