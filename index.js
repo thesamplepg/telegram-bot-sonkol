@@ -30,6 +30,11 @@ const sendToAllChats = (message) => {
   });
 };
 
+app.get("/", (req, res) => {
+  console.log("alive");
+  res.json({ message: "alive" });
+});
+
 app.post("/", (req, res) => {
   const keys = Object.keys(req.body);
   let data = "";
