@@ -4,7 +4,7 @@ const TelegramBot = require("node-telegram-bot-api");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const botToken = "7402779671:AAHKFoymWDpUrNL7BCc5K0hHSoZlTloyfGE";
+const botToken = "6801956381:AAH-io6hIwSk58aKb0ODdgcAlTzEIMfPrDE";
 
 const app = express();
 const bot = new TelegramBot(botToken, { polling: true });
@@ -16,9 +16,14 @@ let dataBase = require("./chats.json");
 
 bot.on("message", (msg) => {
   const chatId = msg.chat.id;
+  console.log(chatId);
 
-  dataBase.chats.push(chatId);
-  fs.writeFileSync("chats.json", JSON.stringify(dataBase));
+  console.log(chatId);
+
+  if (!dataBase.chats.includes(chatId)) {
+    dataBase.chats.push(chatId);
+    fs.writeFileSync("chats.json", JSON.stringify(dataBase));
+  }
 });
 
 const sendToAllChats = (message) => {
